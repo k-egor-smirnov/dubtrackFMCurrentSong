@@ -52,11 +52,12 @@ namespace dubtrackfmCurrentSong
             timer1.Enabled = !timer1.Enabled;
         }
 
+        public bool isPostfixChecked = false;
         public void timer1_Tick(object sender, EventArgs e)
         
         {
-            try
-            {
+            try {
+               
                 WebClient c = new WebClient();
                 c.Encoding = Encoding.UTF8;
                 var data = c.DownloadString("http://api.dubtrack.fm/room/" + Properties.Settings.Default.channel);
@@ -64,6 +65,10 @@ namespace dubtrackfmCurrentSong
                 JObject o = JObject.Parse(data);
                 string song = (string)o["data"]["currentSong"]["name"];
                 song = System.Net.WebUtility.HtmlDecode(song);
+                if (isPostfixChecked)
+                {
+                    song += " [dubtrack.fm/join/" + Properties.Settings.Default.channel + "]";
+                }
                 label4.Text = song;
                 System.IO.File.WriteAllText(Properties.Settings.Default.file, song);
             }
@@ -117,6 +122,11 @@ namespace dubtrackfmCurrentSong
         {
             this.timer1.Enabled = true;
             this.Enabled = true;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            isPostfixChecked = !isPostfixChecked;
         }
     }
 
