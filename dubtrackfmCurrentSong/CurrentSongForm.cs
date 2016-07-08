@@ -70,7 +70,7 @@ namespace dubtrackfmCurrentSong
             catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException er){
             }catch
             {
-                label4.Text = "Error";
+                label4.Text = " ";
             }
         }
 
