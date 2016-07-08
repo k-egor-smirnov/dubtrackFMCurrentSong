@@ -104,8 +104,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChooseFileForm";
             this.Text = "Dubtrack.FM Current Song";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChooseFileForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

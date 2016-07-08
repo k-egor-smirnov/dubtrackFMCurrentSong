@@ -74,5 +74,10 @@ namespace dubtrackfmCurrentSong
         {
 
         }
+
+        private void ChooseFileForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
+
     }
 }

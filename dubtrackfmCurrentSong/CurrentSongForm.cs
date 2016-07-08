@@ -98,15 +98,17 @@ namespace dubtrackfmCurrentSong
         {
             ChooseFileForm form = new ChooseFileForm();
             this.timer1.Enabled = false;
+            this.Enabled = false;
             form.Parent = this.Parent;
             form.Show();
-
+            form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ChooseFileForm form = new ChooseFileForm();
             this.timer1.Enabled = false;
+            this.Enabled = false;
             form.Parent = this.Parent;
             form.Show();
             form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
@@ -114,6 +116,7 @@ namespace dubtrackfmCurrentSong
         void ChildFormClosed(object sender, FormClosedEventArgs e)
         {
             this.timer1.Enabled = true;
+            this.Enabled = true;
         }
     }
 
